@@ -32,6 +32,11 @@ class Form extends Component {
                 })
             }).catch(err => console.log('Err in get', err));
     }
+    handleEdit(id, productName, productUrl, productPrice) {
+        axios.put(`/api/product/${id}`, {productName, productUrl, productPrice})
+            .then(() => this.props.history.push('/'))
+            .catch(err => console.log('Err in handleEdit', err));
+    }
     handleName(event){
         this.setState({
             productName: event.target.value
@@ -58,8 +63,8 @@ class Form extends Component {
         event.preventDefault();
     }
     render() {
-        
-        
+        let { id } = this.props.match.params;
+        let { isEditing } = this.props;
         let { productImg, productName, productPrice } = this.state;
         return ( 
             <div>
@@ -72,7 +77,10 @@ class Form extends Component {
                     <label>Price</label>
                     <input type="text" onChange={(event) => this.handlePrice(event)} value={productPrice} />
                     <button onClick={this.handleClear}>Cancel</button>
-                    <button onClick={() => this.handlePost(productName, productImg, productPrice)}>Add to Inventory</button>
+                    {id ? 
+                        <button onClick={() => this.handleEdit(id, productName, productImg, productPrice)}>Save Changes</button> :
+                        <button onClick={() => this.handlePost(productName, productImg, productPrice)}>Add to Inventory</button>
+                    }
                 </form>
             </div>
          );

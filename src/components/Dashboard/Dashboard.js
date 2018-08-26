@@ -6,7 +6,8 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            products: []
+            products: [],
+            isEditing: false
          }
          this.handleGetAll = this.handleGetAll.bind(this);
          this.handleDelete = this.handleDelete.bind(this);

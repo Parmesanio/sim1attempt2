@@ -18,5 +18,7 @@ app.get('/api/inventory', pC.getAll);
 app.post('/api/product', pC.create);
 //DELETE
 app.delete('/api/product/:id', pC.delete)
+//PUT
+app.put('/api/product/:id', pC.update)
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Product = (props) => {
     
@@ -9,7 +10,7 @@ const Product = (props) => {
             <h3>{product_name}</h3>
             <p>{product_price}</p>
             <button onClick={() => handleDelete(id)}>Delete</button>
-            <button>Edit</button>
+            <Link to={`/edit/${id}`}><button>Edit</button></Link>
         </div>
      );
 }

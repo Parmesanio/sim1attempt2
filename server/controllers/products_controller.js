@@ -3,7 +3,7 @@ module.exports = {
         const db = req.app.get('db');
         console.log(req.body);
         db.get_inventory()
-            .then(response => res.send(response))
+            .then(response => res.sendStatus(response))
             .catch(err => console.log('Err in getAll', err));  
     },
     create: (req, res) => {
@@ -18,7 +18,16 @@ module.exports = {
         let { id } = req.params;
         
         db.delete_product(id)
-            .then(() => res.send(200))
+            .then(() => res.sendStatus(200))
             .catch(err => console.log('Err in delete', err));
+    },
+    update: (req, res) => {
+        const db = req.app.get('db');
+        let { id } = req.params;
+        let { productName, productUrl, productPrice } = req.body;
+
+        db.update_product([id, productName, productUrl, productPrice])
+            .then(() => res.sendStatus(200))
+            .catch(err => console.log('Err in update', err));
     }
 }
