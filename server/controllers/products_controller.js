@@ -3,7 +3,7 @@ module.exports = {
         const db = req.app.get('db');
         console.log(req.body);
         db.get_inventory()
-            .then(response => res.sendStatus(response))
+            .then(response => res.send(response))
             .catch(err => console.log('Err in getAll', err));  
     },
     create: (req, res) => {

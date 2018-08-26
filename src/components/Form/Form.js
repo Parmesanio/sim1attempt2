@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import './form.css';
+
 
 class Form extends Component {
     constructor(props) {
@@ -67,19 +68,23 @@ class Form extends Component {
         let { isEditing } = this.props;
         let { productImg, productName, productPrice } = this.state;
         return ( 
-            <div>
+            <div className="formcomponent">
+            {productImg ? 
+                        <img src={productImg} alt={productName} /> :
+                        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPy_NEAAMLGbTWWl-v7Y0qhZ-0xofMmLfCp87l7MdbkdVYdvafYA' alt={productName} />
+                    }
                 <form onSubmit={(event) => this.onSubmit(event)}>
-                    <img src={productImg} alt={productName} />
                     <label>Image URL</label>
                     <input type="text" onChange={(event) => this.handleImg(event)} value={productImg} />
                     <label>Product Name</label>
                     <input type="text" onChange={(event) => this.handleName(event)} value={productName} />
                     <label>Price</label>
                     <input type="text" onChange={(event) => this.handlePrice(event)} value={productPrice} />
-                    <button onClick={this.handleClear}>Cancel</button>
+                    <br /><br />
+                    <button className="cancel" onClick={this.handleClear}>Cancel</button>
                     {id ? 
-                        <button onClick={() => this.handleEdit(id, productName, productImg, productPrice)}>Save Changes</button> :
-                        <button onClick={() => this.handlePost(productName, productImg, productPrice)}>Add to Inventory</button>
+                        <button className="save" onClick={() => this.handleEdit(id, productName, productImg, productPrice)}>Save Changes</button> :
+                        <button className="save" onClick={() => this.handlePost(productName, productImg, productPrice)}>Add to Inventory</button>
                     }
                 </form>
             </div>

@@ -18,8 +18,6 @@ class Dashboard extends Component {
     handleGetAll() {
         axios.get('/api/inventory')
             .then(res => {
-                console.log(res);
-                
                 this.setState({
                     products: res.data
                 })

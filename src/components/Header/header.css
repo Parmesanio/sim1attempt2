@@ -1,0 +1,23 @@
+header {
+    height: 70px;
+    background: #ab2a19;
+}
+.logo {
+    float: left;
+    line-height: 2;
+    margin-left: 3em;
+}
+nav {
+    float: left;
+    line-height: 4.4;
+    margin-left: 5em;
+}
+nav a {
+    background: #ed6b5a;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    margin-left: 1em;
+    padding: 12px 20px;
+    text-decoration: none;
+}
